@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neverland | Archivo del universo</title>
+<style>
+:root{--bg:#11130f;--panel:#1b1e17;--ink:#eee5d4;--muted:#b9b09d;--gold:#c7a76b;--line:#50452e;--green:#75836a}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:radial-gradient(ellipse at top,#293024 0,#11130f 48rem);color:var(--ink);font:17px/1.75 Georgia,"Times New Roman",serif}
+a{color:var(--gold)}
+button,a{font:inherit}
+.nav-btn{text-decoration:none;display:inline-block}
+.hero{min-height:55vh;display:grid;place-items:center;text-align:center;padding:4rem 1rem;border-bottom:1px solid var(--line);background:linear-gradient(#11130f55,#11130fee),radial-gradient(ellipse at center,#65734b55,transparent 65%)}
+.kicker{font: .78rem/1.5 Arial,sans-serif;letter-spacing:.25em;text-transform:uppercase;color:var(--gold)}
+h1{font-weight:normal;font-size:clamp(3.5rem,12vw,7rem);line-height:1.05;margin:.3em 0}
+.hero p{color:var(--muted);font-style:italic;margin:.4rem auto;max-width:650px}
+nav{position:sticky;top:0;z-index:10;background:#10120ff2;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-inner{width:min(1200px,96%);margin:auto;display:flex;gap:.35rem;justify-content:center;flex-wrap:wrap;padding:.6rem 0}
+.nav-btn{border:1px solid transparent;background:transparent;color:var(--ink);padding:.6rem .85rem;cursor:pointer}
+.nav-btn:hover,.nav-btn.active{border-color:var(--line);color:var(--gold);background:#27291f}
+main{width:min(1050px,92%);margin:2.5rem auto 5rem}
+.page{display:none;animation:fade .22s ease}
+.page.active{display:block}
+.page:target{display:block}
+body:has(.page:target) .page.active:not(:target){display:none}
+@keyframes fade{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}
+.page-title{border-bottom:1px solid var(--line);padding-bottom:1rem;margin-bottom:1.6rem}
+h2{font-size:clamp(2rem,5vw,3.2rem);font-weight:normal;margin:0}
+.page-title p,.muted{color:var(--muted)}
+.card{background:#1b1e17e8;border:1px solid var(--line);padding:clamp(1.1rem,3vw,2rem);margin:1rem 0}
+h3{font-size:1.5rem;color:var(--gold);font-weight:normal;margin:.1rem 0 .7rem}
+h4{font-weight:normal;color:#d8c9a7;font-size:1.1rem;margin:1.3rem 0 .2rem}
+p{margin:.65rem 0}
+ul{padding-left:1.3rem}
+li{margin:.35rem 0}
+.note{color:var(--muted);font-style:italic;font-size:.94rem}
+.subnav{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0}
+.subnav button,.back{background:#20241a;border:1px solid var(--line);color:var(--ink);padding:.55rem .85rem;cursor:pointer}
+.subnav button:hover,.subnav button.active,.back:hover{color:var(--gold);border-color:var(--gold)}
+.race-panel{display:none}
+.race-panel.active{display:block}
+.race-grid,.photo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:1rem}
+.race-card{display:block;text-align:left;min-height:120px;width:100%;padding:1.1rem;background:#1b1e17;border:1px solid var(--line);color:var(--ink);cursor:pointer}
+.race-card strong{display:block;color:var(--gold);font-weight:normal;font-size:1.2rem}
+.race-card span{display:block;color:var(--muted);font-size:.95rem;margin-top:.3rem}
+.photo-card{margin:0;background:#1b1e17;border:1px solid var(--line);padding:1rem}
+.photo-card h3{font-size:1.2rem}
+.photo-card img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:#292d23;border:1px solid var(--line);color:var(--muted)}
+.caption{font-size:.95rem;color:var(--muted)}
+.tag{display:inline-block;border:1px solid var(--line);padding:.1rem .5rem;color:var(--gold);font: .75rem Arial,sans-serif;margin:.1rem}
+footer{text-align:center;color:var(--muted);padding:2rem 1rem;border-top:1px solid var(--line)}
+@media(max-width:600px){body{font-size:16px}.nav-inner{justify-content:flex-start;padding:.5rem;overflow-x:auto;flex-wrap:nowrap}.nav-btn{white-space:nowrap;font-size:.9rem}.hero{min-height:45vh}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div>
+    <div class="kicker">Archivo del universo</div>
+    <h1>Neverland</h1>
+    <p>Un mundo de alianzas frágiles, magia antigua y secretos que sobreviven entre los árboles.</p>
+  </div>
+</script>
+</header>
+<nav aria-label="Navegación principal">
+  <div class="nav-inner">
+    <a class="nav-btn active" href="#general" data-page="general">Lore general</a>
+    <a class="nav-btn" href="#humanos" data-page="humanos">Humanos</a>
+    <a class="nav-btn" href="#lobos" data-page="lobos">Hombres lobo</a>
+    <a class="nav-btn" href="#magos" data-page="magos">Brujas y magos</a>
+    <a class="nav-btn" href="#hadas" data-page="hadas">Hadas oscuras</a>
+    <a class="nav-btn" href="#vampiros" data-page="vampiros">Vampiros</a>
+    <a class="nav-btn" href="#encuentro" data-page="encuentro">Quackity y Spreen</a>
+    <a class="nav-btn" href="#tina" data-page="tina">La historia de Tina</a>
+    <a class="nav-btn" href="#relaciones" data-page="relaciones">Relaciones</a>
+    <a class="nav-btn" href="#fotos" data-page="fotos">Fotos</a>
+  </div>
+</nav>
+
+<main>
+<section class="page active" id="general">
+  <div class="page-title"><h2>Lore general del universo</h2><p>Las reglas, los territorios y las fuerzas que dan forma a Neverland.</p></div>
+  <article class="card">
+    <h3>El mundo de Neverland</h3>
+    <p>Neverland es un mundo de fantasía habitado por humanos, vampiros, hombres lobo, brujas y magos, y hadas oscuras. Aunque todas estas especies comparten el mismo mundo, no todas conviven en armonía. Las alianzas, las rivalidades y los prejuicios han moldeado sus sociedades durante generaciones.</p>
+    <p>La época en la que transcurre la historia carece de los avances tecnológicos del mundo moderno. No existen teléfonos convencionales, internet ni medios de comunicación instantáneos. La mayoría de las sociedades utilizan mensajeros, cartas y palomas para transmitir noticias, aunque existen métodos mágicos capaces de facilitar algunas tareas.</p>
+    <p>Los magos pueden fabricar esferas encantadas que funcionan como dispositivos de comunicación. Sin embargo, su fabricación es costosa y no todas las especies tienen acceso a ellas. Por eso, incluso en las regiones donde estas esferas son conocidas, las palomas mensajeras siguen siendo el método más habitual.</p>
+    <p>El poder de una especie no depende únicamente de su fuerza física o de sus habilidades sobrenaturales. La influencia política, el conocimiento, los recursos naturales y las alianzas también determinan qué sociedades prosperan y cuáles terminan sometidas a otras.</p>
+  </article>
+  <article class="card">
+    <h3>Reglas del mundo mágico</h3>
+    <h4>La magia tiene un coste</h4>
+    <p>La magia no puede resolver cualquier problema sin consecuencias. Los hechizos complejos requieren práctica, concentración y, en ocasiones, ingredientes o materiales poco comunes. Forzar una habilidad más allá de los límites del usuario puede provocar agotamiento, pérdida de control o efectos inesperados.</p>
+    <h4>El conocimiento no es universal</h4>
+    <p>Que una especie conozca una forma de magia no significa que todas las demás puedan utilizarla. Algunas habilidades dependen de la naturaleza de quien las practica; otras requieren años de estudio, objetos preparados o condiciones específicas.</p>
+    <h4>Las criaturas tienen límites</h4>
+    <p>Las habilidades sobrenaturales no vuelven invulnerable a nadie. Las heridas, el agotamiento, el hambre y las debilidades particulares pueden alterar el resultado de un enfrentamiento. La experiencia y la estrategia importan tanto como la fuerza.</p>
+    <h4>La información viaja despacio</h4>
+    <p>Sin medios modernos de comunicación, los rumores pueden tardar días o semanas en alcanzar otras regiones. Las palomas, los mensajeros y las esferas encantadas son importantes para el comercio, la política y la guerra.</p>
+    <h4>La historia deja consecuencias</h4>
+    <p>Las alianzas y rivalidades tienen raíces. Una persona puede elegir actuar de forma distinta a su especie, pero no puede borrar de inmediato los daños que sus comunidades hayan causado en el pasado.</p>
+  </article>
+  <article class="card">
+    <h3>Territorios principales</h3>
+    <h4>Azkadell</h4><p>Una de las tribus humanas más poderosas, gobernada por Spreen. Su influencia militar y sus recursos la convierten en una comunidad temida y respetada, aunque su historia de persecución contra las hadas oscuras sigue siendo una mancha importante.</p>
+    <h4>El Bosque Prohibido</h4><p>Una extensa región boscosa llena de senderos difíciles, plantas peligrosas y vegetación que parece moverse por voluntad propia. Las historias humanas lo describen como un lugar del que nadie regresa después de encontrarse con un hada oscura.</p>
+    <h4>El Reino de las Hadas</h4><p>Un territorio oculto detrás del Bosque Prohibido, aislado durante décadas. Sus habitantes viven en comunidad y organizan sus tareas según sus vocaciones y las necesidades del reino.</p>
+    <h4>Las residencias vampíricas</h4><p>Castillos y propiedades pertenecientes a familias nobles, generalmente apartados de los asentamientos humanos. En ellos se celebran banquetes, reuniones políticas y cacerías tradicionales.</p>
+    <h4>La Escuela de Magos</h4><p>Una institución dedicada al estudio de la magia, las pociones, los sigilos y los rituales. Su ubicación facilita el contacto con otras regiones, aunque sus conocimientos no se comparten libremente con cualquiera.</p>
+  </article>
+</section>
+
+<section class="page" id="humanos">
+  <div class="page-title"><h2>Humanos</h2><p>Tribus, supervivencia y el precio de la cacería.</p></div>
+  <article class="card">
+    <p>Los humanos constituyen una de las especies más numerosas de Neverland, aunque carecen de las habilidades sobrenaturales innatas que poseen las demás. Su supervivencia depende de su capacidad para organizarse, fabricar herramientas, desarrollar estrategias y establecer alianzas.</p>
+    <p>La mayoría de las comunidades humanas vive en tribus asentadas en bosques, llanuras y regiones montañosas. Cada tribu posee sus propias costumbres, autoridades y métodos de supervivencia. Algunas se dedican principalmente a la agricultura y la recolección, mientras que otras se especializan en la caza, la fabricación de armas o el comercio.</p>
+    <p>Las tribus no siempre mantienen relaciones amistosas. Las disputas por los territorios, los recursos y las rutas comerciales pueden desembocar en enfrentamientos prolongados. Sin embargo, muchas comprenden que intentar sobrevivir completamente aisladas es peligroso, especialmente en un mundo donde existen criaturas capaces de superar a varios guerreros humanos sin demasiada dificultad.</p>
+    <p>Para compensar esta desventaja, algunas tribus entrenan guerreros especializados en la caza de criaturas sobrenaturales. Estos combatientes son venerados como protectores y reciben privilegios por defender sus hogares. Entre sus objetivos tradicionales se encuentran los vampiros y las hadas oscuras, aunque no todos los cazadores consideran que cualquier criatura sobrenatural deba ser asesinada.</p>
+    <p>La caza de hadas oscuras se convirtió en una práctica particularmente cruel. Sus alas, consideradas valiosas por determinados comerciantes y coleccionistas, fomentaron un mercado que justificaba las expediciones contra ellas. La propaganda de algunas tribus terminó presentándolas como monstruos incapaces de convivir con otras especies, ignorando deliberadamente las atrocidades cometidas contra sus comunidades.</p>
+    <p>No todas las tribus comparten estas creencias. Algunas mantienen acuerdos con los hombres lobo y los magos, mientras que otras prefieren permanecer neutrales y evitar los conflictos que no afectan directamente a sus territorios.</p>
+  </article>
+  <article class="card">
+    <h3>Azkadell</h3>
+    <p>Azkadell es una de las tribus humanas más poderosas de Neverland. Su influencia militar, sus recursos y su capacidad para establecer acuerdos con otros territorios la convierten en una comunidad temida y respetada.</p>
+    <p>Sin embargo, su historia está marcada por una de las campañas de exterminio más crueles contra las hadas oscuras. Durante años, sus cazadores persiguieron a estas criaturas con el objetivo de obtener sus alas y eliminar cualquier amenaza que pudieran representar. Las expediciones fueron tan constantes que numerosas comunidades de hadas desaparecieron por completo.</p>
+    <p>Las supervivientes se vieron obligadas a abandonar sus territorios y refugiarse en regiones inaccesibles del bosque. La persecución no solo destruyó familias enteras, sino que también transformó la relación entre ambas especies. Para las hadas que sobrevivieron, los humanos dejaron de ser simples desconocidos y pasaron a representar una amenaza colectiva.</p>
+    <p>Azkadell conserva una reputación ambigua. Para muchas tribus, representa un modelo de poder y organización. Para las hadas oscuras, su nombre es sinónimo de pérdida, crueldad y exterminio.</p>
+    <p>Aunque sus líderes actuales no necesariamente participan en todas las antiguas prácticas de caza, el daño histórico continúa influyendo en sus relaciones con otras especies.</p>
+  </article>
+  <article class="card">
+    <h3>Spreen, líder de Azkadell</h3>
+    <p>Spreen es un hombre lobo que ejerce el liderazgo de Azkadell. A pesar de su posición, no siente demasiado interés por las tareas administrativas. Suele delegar buena parte de sus responsabilidades en otros miembros de la comunidad y prefiere viajar entre tribus y reinos antes que pasar horas revisando documentos.</p>
+    <p>Su comportamiento despreocupado contrasta con la influencia que posee. Spreen puede mostrarse informal, distraído e incluso irresponsable en asuntos cotidianos, pero su posición implica que sus decisiones tienen consecuencias políticas importantes.</p>
+    <p>Su condición de hombre lobo también resulta particular: aunque gobierna una tribu humana, mantiene vínculos con las comunidades de su propia especie. Esto le permite moverse entre distintos círculos políticos, aunque también puede generar tensiones cuando los intereses de Azkadell entran en conflicto con los de los clanes lupinos.</p>
+  </article>
+</section>
+
+<section class="page" id="lobos">
+  <div class="page-title"><h2>Hombres lobo</h2><p>Clanes, transformaciones y alianzas.</p></div>
+  <article class="card">
+    <p>Los hombres lobo son criaturas capaces de adoptar una forma lupina o parcialmente lupina, dependiendo de sus características individuales. Poseen sentidos agudos, una fuerza física extraordinaria y una conexión cultural y sobrenatural con la luna.</p>
+    <p>Aunque sus capacidades varían entre individuos, la mayoría destaca por su resistencia, su velocidad y su capacidad para rastrear presas a grandes distancias. Sus sentidos también les permiten detectar olores, movimientos y sonidos que pasarían inadvertidos para los humanos.</p>
+    <p>La transformación no tiene por qué producirse exclusivamente durante la luna llena. Sin embargo, las fases lunares pueden influir en sus costumbres, ceremonias y actividades colectivas.</p>
+    <h3>Los clanes</h3>
+    <p>A diferencia de los humanos, los hombres lobo no se organizan en tribus. Su sociedad se divide en clanes, comunidades que comparten un territorio, una historia y un sentido de pertenencia.</p>
+    <p>Cada clan posee sus propias reglas y formas de liderazgo. Algunos están dirigidos por una única figura de autoridad, mientras que otros distribuyen las responsabilidades entre varios miembros experimentados.</p>
+    <p>La lealtad al clan es una de las bases de su cultura. Abandonar a un compañero en una situación peligrosa puede considerarse una falta grave, aunque las normas varían entre comunidades. Los conflictos internos tampoco son desconocidos: las disputas por el liderazgo, los desacuerdos políticos y las diferencias entre generaciones pueden dividir incluso a los clanes más antiguos.</p>
+    <p>Los territorios lupinos suelen incluir bosques, montañas y extensas zonas de caza. Sus asentamientos pueden ser permanentes o cambiar de ubicación según las estaciones y la disponibilidad de recursos.</p>
+    <h3>La alianza con los humanos</h3>
+    <p>Los hombres lobo mantienen una alianza con numerosas comunidades humanas. Esta relación se basa en intereses compartidos: los humanos proporcionan recursos, conocimientos artesanales y redes comerciales, mientras que los lobos ofrecen protección y apoyo militar.</p>
+    <p>La alianza no significa que ambas especies estén libres de prejuicios. Algunos humanos desconfían de la fuerza de los hombres lobo, mientras que ciertos clanes consideran a los humanos demasiado vulnerables o dependientes de sus herramientas.</p>
+    <p>A pesar de estas diferencias, la cooperación ha permitido que numerosas comunidades sobrevivan a amenazas que no podrían enfrentar por separado.</p>
+    <p>Azkadell constituye un caso particular debido a que está gobernada por Spreen, un hombre lobo. Su liderazgo representa un vínculo político entre las dos especies, aunque las prácticas históricas de la tribu contra las hadas oscuras pueden generar desacuerdos con individuos y clanes que prefieren evitar las persecuciones indiscriminadas.</p>
+    <h3>Costumbres y tradiciones</h3>
+    <p>Las ceremonias lunares ocupan un lugar importante en la cultura de los hombres lobo. Pueden utilizarse para conmemorar a los miembros fallecidos, celebrar la llegada de nuevos integrantes o renovar los compromisos entre los miembros de un clan.</p>
+    <p>El entrenamiento físico y la caza también son actividades fundamentales. Los jóvenes aprenden a controlar sus transformaciones, interpretar rastros y actuar en grupo antes de asumir responsabilidades dentro de su comunidad.</p>
+  </article>
+</section>
+
+<section class="page" id="magos">
+  <div class="page-title"><h2>Brujas y magos</h2><p>Conocimiento, disciplina y magia peligrosa.</p></div>
+  <article class="card">
+    <p>Los magos y las brujas son individuos capaces de manipular fuerzas sobrenaturales mediante el estudio, la práctica y el conocimiento de la magia.</p>
+    <p>Aunque pueden compartir ciertas características, no todos dominan las mismas disciplinas. Algunos se especializan en pociones, otros en encantamientos, rituales, maldiciones o técnicas de combate. El dominio de una disciplina no garantiza que puedan utilizar las demás con la misma eficacia.</p>
+    <p>Su sociedad gira alrededor del aprendizaje. A diferencia de los humanos, que suelen organizarse en tribus, o de los hombres lobo, que forman clanes, los practicantes de magia no pertenecen necesariamente a comunidades permanentes. Pueden estudiar con maestros, viajar de una región a otra o trabajar de manera independiente.</p>
+    <p>El conocimiento es su principal fuente de prestigio, pero también una de las causas de sus conflictos.</p>
+    <h3>El aprendizaje mágico</h3>
+    <p>Los magos suelen ser arrogantes y reservados con sus conocimientos. Muchos consideran que los hechizos que han desarrollado o perfeccionado les pertenecen exclusivamente y se niegan a compartirlos con otros practicantes.</p>
+    <p>Esta actitud ha dado lugar a rivalidades entre maestros, estudiantes y viajeros. Algunos magos pueden dedicar décadas a perfeccionar un conjuro, por lo que consideran una ofensa que otro individuo intente apropiarse de él sin permiso.</p>
+    <p>El aprendizaje no depende únicamente de la capacidad innata. Comprender la teoría, memorizar las fórmulas y practicar correctamente los rituales es esencial para evitar errores. Un mago talentoso puede fracasar si desconoce los fundamentos de un hechizo, mientras que uno menos poderoso puede obtener resultados extraordinarios gracias a su experiencia.</p>
+    <p>Los magos nacen de otros magos. Al menos uno de sus progenitores debe poseer esta naturaleza para que el individuo nazca con la capacidad de practicar magia.</p>
+    <p>Sin embargo, la herencia no determina automáticamente su talento. Algunos nacen con una afinidad excepcional, mientras que otros necesitan años de estudio para dominar técnicas relativamente sencillas.</p>
+    <h3>Las disciplinas mágicas</h3>
+    <p>La magia puede dividirse en distintas disciplinas, cada una con sus propias reglas, materiales y limitaciones.</p>
+    <ul><li><strong>Pociones:</strong> preparaciones elaboradas con plantas, minerales, hongos y otros ingredientes. Sus efectos dependen de las sustancias utilizadas y de la precisión con la que se preparan.</li>
+    <li><strong>Conjuros:</strong> fórmulas verbales o mentales que permiten canalizar magia para producir efectos concretos.</li>
+    <li><strong>Rituales:</strong> procedimientos que requieren una secuencia específica de acciones, ingredientes o condiciones. Algunos pueden necesitar varios participantes.</li>
+    <li><strong>Hechizos inscritos o sigilos:</strong> dibujos, símbolos y patrones mágicos trazados sobre superficies para activar efectos sobrenaturales. Pueden aparecer en papel, piedra, madera, tela o incluso en el suelo.</li></ul>
+    <p>Los símbolos inscritos son especialmente útiles cuando un efecto necesita mantenerse activo durante cierto tiempo o cuando no puede depender exclusivamente de la concentración del mago.</p>
+    <p>No obstante, la magia tiene límites. Un hechizo complejo puede requerir preparación, materiales poco comunes o una cantidad considerable de energía. Un practicante que intente realizar un conjuro que supera sus capacidades puede sufrir consecuencias físicas o perder el control del efecto.</p>
+    <h3>La relación con otras especies</h3>
+    <p>Los magos mantienen alianzas con los humanos y los hombres lobo. Estas relaciones facilitan el intercambio de conocimientos, la protección de los territorios y el acceso a ingredientes que no se encuentran en todas las regiones.</p>
+    <p>Sin embargo, la cooperación no significa que todos los practicantes sean confiables.</p>
+    <p>Los magos corruptos viven de manera independiente y rechazan las normas de cooperación que mantienen otros grupos. Algunos utilizan su conocimiento para obtener poder, manipular a otras especies o realizar experimentos prohibidos. Otros simplemente consideran que ninguna autoridad tiene derecho a limitar sus investigaciones.</p>
+    <p>Los magos viajeros, por su parte, suelen establecer relaciones más flexibles. Pueden ofrecer sus servicios a comunidades humanas, intercambiar conocimientos con otros practicantes o negociar con vampiros y hadas guerreras cuando sus intereses coinciden.</p>
+    <p>Estas relaciones son delicadas. Un mago que acepta trabajar para un vampiro puede obtener recursos valiosos, pero también verse involucrado en disputas políticas que no comprende por completo.</p>
+  </article>
+</section>
+
+<section class="page" id="hadas">
+  <div class="page-title"><h2>Hadas oscuras</h2><p>El reino oculto, el canto y una historia de persecución.</p></div>
+  <article class="card">
+    <p>En los bosques más profundos de Neverland, donde las esporas de los hongos pueden embriagar a los viajeros y las enredaderas parecen moverse por voluntad propia, se encuentra el Reino de las Hadas.</p>
+    <p>Apartadas de las demás especies desde hace más de dos décadas, las hadas han conseguido mantener una sociedad relativamente estable en las profundidades del bosque. La vegetación es densa, los árboles bloquean gran parte de la luz solar y los caminos cambian constantemente debido al crecimiento de las plantas.</p>
+    <p>Es un territorio difícil de explorar y todavía más difícil de abandonar sin conocer sus senderos.</p>
+    <p>Las historias transmitidas por los humanos describen el bosque como un lugar del que nadie regresa. «Nadie que se haya encontrado con un hada sobrevivía», dicen algunas leyendas.</p>
+    <p>Sin embargo, la realidad es más compleja. Las hadas no son invencibles ni poseen poderes ilimitados. Su reputación se construyó, en parte, para justificar las persecuciones y reducir el remordimiento de quienes las cazaban.</p>
+    <p>Las alas de las hadas se convirtieron en objetos codiciados, y su exterminio fue presentado como una medida de protección frente a criaturas supuestamente monstruosas.</p>
+    <p>Las supervivientes recuerdan otra historia: familias separadas, hogares destruidos y compañeros asesinados por cazadores que jamás se molestaron en conocerlas.</p>
+    <h3>El origen de las hadas</h3>
+    <p>Las hadas no nacen mediante una reproducción convencional. Su existencia comienza durante el invierno, cuando determinados copos de nieve caen sobre las aguas vitales del reino.</p>
+    <p>Estas aguas son fuentes naturales de energía mágica que las hadas utilizan para fortalecerse, recuperarse y mantener el equilibrio de su organismo.</p>
+    <p>La mayoría de los copos se derrite al entrar en contacto con el agua. Sin embargo, algunos permanecen intactos. Cuando las condiciones son adecuadas, comienzan a transformarse hasta dar origen a una nueva hada.</p>
+    <p>Las hadas nacen con una apariencia joven, sin pasar por una etapa de infancia equivalente a la de los humanos. Su desarrollo posterior depende de la experiencia, el aprendizaje y la adaptación a su entorno.</p>
+    <p>Este proceso es poco frecuente y está condicionado por la cantidad de copos que sobreviven, evitando que la población crezca sin límites.</p>
+    <p>Las hadas pueden ser de cualquier género. Su origen mágico no depende de una relación entre individuos, sino de un fenómeno natural vinculado al invierno y a las aguas vitales.</p>
+    <h3>El Reino de las Hadas</h3>
+    <p>El reino funciona mediante una organización comunitaria. No existe una moneda convencional y las tareas se distribuyen entre sus habitantes según sus habilidades y las necesidades colectivas.</p>
+    <p>Cada hada cumple un oficio que contribuye al bienestar de las demás. Algunas cultivan plantas medicinales, otras reparan viviendas, estudian la magia o protegen las fronteras. El trabajo no está completamente libre de conflictos, pero se considera una responsabilidad compartida.</p>
+    <p>El sistema también tiene desventajas. Cuando faltan especialistas en una determinada actividad, las pocas hadas capaces de realizarla deben asumir una carga de trabajo excesiva.</p>
+    <p>La medicina es uno de los oficios más exigentes. Requiere conocer numerosas plantas, identificar hongos, preparar remedios y comprender las propiedades de las aguas vitales.</p>
+    <p>Además, recolectar ingredientes fuera de las zonas seguras puede ser peligroso. Algunas plantas son carnívoras, otras reaccionan al movimiento y ciertas enredaderas pueden perseguir a cualquier criatura que invada su territorio.</p>
+    <h3>La magia de las hadas</h3>
+    <p>Las hadas poseen alas que les permiten volar, aunque no suelen utilizarlas de manera constante. El vuelo consume energía y puede llamar la atención de criaturas que prefieren evitar.</p>
+    <p>Su magia se manifiesta principalmente mediante el canto. Sin embargo, no se trata de una capacidad de hipnotización ni de un poder que obligue a los demás a obedecer.</p>
+    <p>El canto permite alterar las condiciones del espacio y del tiempo en un área determinada. Sus efectos dependen de la melodía, la intensidad y el control que tenga el hada sobre su propia magia.</p>
+    <ul><li><strong>Alteración temporal:</strong> el canto puede ralentizar el transcurso del tiempo dentro de un área. El efecto afecta también a los movimientos del aire, dificultando la respiración de quienes quedan atrapados en su alcance.</li>
+    <li><strong>Germinación invasiva:</strong> mediante un canto de gran complejidad, el hada puede provocar el crecimiento acelerado de hongos sobre el cuerpo de una amenaza, tanto externa como internamente.</li>
+    <li><strong>Técnica secreta:</strong> existe una última técnica cuyo funcionamiento se mantiene desconocido. Las historias afirman que nadie que haya presenciado su utilización ha sobrevivido para describirla.</li></ul>
+    <p>Esta última habilidad contribuye a la reputación aterradora de las hadas, aunque no está claro si todas las historias que circulan sobre ella son ciertas.</p>
+    <p>Sus poderes no son ilimitados. Un canto prolongado puede agotar al hada y la precisión de sus efectos depende de su experiencia. Interrumpir la concentración también puede impedir que una técnica alcance su resultado completo.</p>
+    <h3>La debilidad del metal</h3>
+    <p>El metal constituye una de las principales debilidades de las hadas.</p>
+    <p>Su contacto directo con la piel produce quemaduras y debilita su capacidad mágica. La gravedad de sus efectos depende del tiempo de exposición y de las características del metal utilizado.</p>
+    <p>Por este motivo, las hadas evitan las herramientas metálicas y prefieren fabricar sus utensilios con madera, piedra, fibras vegetales y otros materiales naturales.</p>
+    <p>Las armas metálicas son especialmente peligrosas en combate. Un cazador que consiga acercarse lo suficiente puede neutralizar temporalmente a un hada, incluso si esta posee una gran experiencia mágica.</p>
+    <p>La debilidad no significa que cualquier objeto metálico las mate de inmediato, pero sí que un contacto prolongado puede dejarlas incapacitadas.</p>
+    <h3>Las hadas Wargans</h3>
+    <p>No todas las hadas permanecen dentro del reino. Las wargans son las encargadas de salir al exterior para defender sus fronteras y proteger a la comunidad.</p>
+    <p>Su trabajo incluye combatir contra intrusos, conseguir alimentos mediante la caza e intimidar a las tribus humanas más cercanas para evitar que se aproximen demasiado.</p>
+    <p>Las wargans reciben entrenamiento en combate y aprenden a reconocer rastros, trampas y armas que podrían utilizarse contra ellas. También conocen los senderos más peligrosos del bosque y las zonas donde las plantas carnívoras pueden servir como defensa natural.</p>
+    <p>A diferencia de otras hadas, suelen estar más familiarizadas con las costumbres de las demás especies. Algunas han observado asentamientos humanos desde la distancia y conocen sus métodos de caza, sus armas y sus alianzas.</p>
+    <p>No todas comparten la misma actitud hacia los humanos. Algunas consideran que cualquier intruso representa una amenaza, mientras que otras distinguen entre los cazadores y quienes no participan en las persecuciones.</p>
+    <p>Sin embargo, la historia de exterminio ha hecho que la confianza sea excepcionalmente difícil de conseguir.</p>
+  </article>
+</section>
+
+<section class="page" id="vampiros">
+  <div class="page-title"><h2>Vampiros</h2><p>Linajes nobles, cacerías y costumbres familiares.</p></div>
+  <article class="card">
+    <p>Los vampiros son criaturas antiguas que viven bajo un sistema aristocrático, organizadas en familias nobles que poseen territorios, castillos y grandes propiedades alejadas de las tribus humanas. No forman clanes como los hombres lobo ni viven en comunidades tan unidas como las hadas. Para ellos, la sangre, el apellido y la antigüedad de una familia determinan su posición social.</p>
+    <p>Aunque se los considera monstruos en muchas historias humanas, los vampiros poseen sus propias costumbres, reglas y formas de convivencia. Son orgullosos, reservados y bastante clasistas. Las familias más antiguas consideran que su linaje los coloca por encima de las demás especies, especialmente de los humanos, a quienes suelen tratar como seres inferiores.</p>
+    <h3>Costumbres y alimentación</h3>
+    <p>Los vampiros pueden comer alimentos comunes, incluyendo carne, frutas y otros platillos. Sin embargo, su alimentación tradicional gira alrededor de la sangre y de la caza de presas vivas. Para las familias nobles, capturar una presa y alimentarse de ella durante una celebración es considerado un símbolo de elegancia, abundancia y poder. En algunos banquetes, las presas son presentadas vivas ante los invitados, como parte del espectáculo.</p>
+    <p>Las cacerías suelen organizarse durante festividades familiares, acontecimientos importantes y noches de Luna llena. En esas ocasiones, los vampiros compiten para demostrar su destreza, presumen sus capturas y utilizan la caza como una forma de reforzar su prestigio.</p>
+    <p>No todos los vampiros disfrutan de estas prácticas, pero negarse a participar puede considerarse una vergüenza familiar. Por eso, muchos ocultan sus verdaderas opiniones para evitar el rechazo o el castigo de sus parientes.</p>
+    <p>La sangre también tiene una importancia social. Existen familias que presumen de alimentarse únicamente de presas consideradas excepcionales, mientras que otras mezclan la sangre con salsas, aderezos y bebidas para disimular su consumo frente a quienes no desean conocer sus costumbres.</p>
+    <h3>Debilidades</h3>
+    <ul><li><strong>La luz solar:</strong> no los quema ni los convierte en cenizas, pero la exposición prolongada debilita sus sentidos y hace que sus habilidades sobrenaturales sean menos precisas. Por eso prefieren mantenerse bajo techo durante las horas más luminosas.</li>
+    <li><strong>El hambre:</strong> cuanto más tiempo pasan sin consumir sangre, más difícil les resulta controlar sus impulsos. Su fuerza y velocidad pueden mantenerse durante un tiempo, pero su juicio empeora y terminan volviéndose más agresivos.</li>
+    <li><strong>Los metales encantados:</strong> ciertos metales tratados mediante rituales mágicos pueden herirlos y dificultar su regeneración. No cualquier objeto metálico sirve, y fabricar uno de estos instrumentos requiere conocimientos que pocas personas poseen.</li>
+    <li><strong>La pérdida de sangre:</strong> pueden recuperarse de heridas que matarían a un humano, pero perder demasiada sangre los debilita gravemente. La regeneración consume energía y no es instantánea.</li>
+    <li><strong>Las emociones intensas:</strong> aunque son físicamente poderosos, el hambre, la ira y el miedo pueden hacer que pierdan el control. Las familias nobles enseñan a sus descendientes a ocultar sus emociones para no parecer vulnerables.</li></ul>
+    <h3>Habilidades</h3>
+    <p>Los vampiros poseen fuerza, velocidad y sentidos superiores a los humanos. Pueden desplazarse con rapidez incluso en lugares oscuros y percibir sonidos u olores que otras especies pasarían por alto. También tienen una capacidad de regeneración que les permite recuperarse de heridas moderadas.</p>
+    <p>Los vampiros más antiguos suelen desarrollar habilidades particulares, aunque estas varían según su linaje. Algunas familias son conocidas por su capacidad para ocultar su presencia, otras por su resistencia y otras por una influencia sobrenatural que les permite intimidar a criaturas más débiles.</p>
+    <p>Sin embargo, no son invencibles. Sus habilidades se deterioran cuando están debilitados, hambrientos o heridos, y la regeneración no puede solucionar cualquier daño.</p>
+    <h3>Relación con las demás especies</h3>
+    <p>Los vampiros mantienen una rivalidad histórica con los hombres lobo. Ambas especies compiten por territorios, prestigio y oportunidades de caza, y las familias nobles suelen considerar a los licántropos criaturas salvajes que carecen de refinamiento. Los hombres lobo, por su parte, desprecian la arrogancia de los vampiros.</p>
+    <p>Con los humanos, la relación depende de cada familia. Algunos vampiros se infiltran en las comunidades humanas para estudiar sus costumbres, obtener información o asistir a sus instituciones educativas sin revelar su identidad. Otros los consideran simples presas.</p>
+    <p>Las brujas y los magos son tratados con mayor cautela, pues sus conocimientos pueden representar una amenaza incluso para los vampiros más poderosos. Las hadas oscuras, en cambio, son criaturas rodeadas de rumores, y muchas familias prefieren evitar enfrentamientos directos con ellas.</p>
+  </article>
+</section>
+
+<section class="page" id="encuentro">
+  <div class="page-title"><h2>Quackity y Spreen</h2><p>El primer encuentro entre un hada oscura y el líder de Azkadell.</p></div>
+  <article class="card">
+    <p>Quackity tenía que salir del Reino de las Hadas para recolectar hierbas medicinales. Era una tarea necesaria, pero detestaba cada segundo que pasaba lejos de los senderos seguros.</p>
+    <p>Su oficio consistía en atender a las demás hadas, preparar remedios y buscar ingredientes para tratar enfermedades y heridas. Le gustaba cuidar de los suyos y no habría cambiado su profesión por otra. Lo que no soportaba era tener que internarse en un bosque donde prácticamente cualquier planta parecía tener intenciones homicidas.</p>
+    <p>Ya había tenido que escapar de varias enredaderas trepadoras que intentaron atraparlo durante la recolección. Para cuando consiguió perderlas de vista, estaba cansado, irritado y bastante seguro de que había tomado el camino equivocado.</p>
+    <p>Quackity conocía las advertencias de las hadas más antiguas. Le habían enseñado que más allá de los límites seguros comenzaba un territorio peligroso, un lugar donde los humanos cazaban a cualquier hada que encontraran y donde los caminos podían conducir a trampas mortales.</p>
+    <p>Por eso, cuando creyó haber encontrado el camino de regreso, no tardó en darse cuenta de que algo no encajaba.</p>
+    <p>Había llegado a un claro desconocido.</p>
+    <p>No encontró campos de batalla, cadáveres ni árboles quemados. El sol iluminaba los arbustos cargados de arándanos, las mariposas revoloteaban entre las flores y la brisa movía suavemente las hojas. El lugar parecía demasiado tranquilo para pertenecer al territorio que le habían descrito durante toda su vida.</p>
+    <p>Y, en medio de aquel paisaje, había un hombre lobo mirándolo con una expresión de absoluta incredulidad.</p>
+    <p>Quackity había ocultado sus alas antes de llegar al claro. La abertura de su ropa podía pasar por un detalle ornamental, pero estaba diseñada para permitir que las alas salieran sin desgarrar la tela. Gracias a eso, el desconocido no había podido identificarlas de inmediato.</p>
+    <p>El hombre lobo se acercó sin demasiadas precauciones.</p>
+    <p>—¿Cómo vas a entrar al bosque prohibido? ¿Hace cuánto llevas ahí?</p>
+    <p>Lo sujetó por los hombros y comenzó a examinarlo en busca de heridas, como si acabara de encontrar a un viajero perdido en medio de una región peligrosa.</p>
+    <p>—¿De qué tribu eres? No te he visto por aquí. ¿Eres humano, no?</p>
+    <p>Quackity sintió que el estómago se le revolvía.</p>
+    <p>El olor del hombre lobo era demasiado intenso para su gusto, y tenerlo tan cerca no ayudaba en absoluto. Aun así, entendía que reaccionar de forma extraña podía despertar sospechas. Necesitaba regresar al reino antes de que el desconocido descubriera lo que era.</p>
+    <p>—Eh... Soy de una tribu lejana. Soy aventurero —mintió, intentando mantener una expresión natural—. Me tengo que ir. Tengo unos compañeros que me estaban buscando.</p>
+    <p>Spreen frunció el ceño.</p>
+    <p>La respuesta no parecía convencerlo, aunque tampoco se apartó de inmediato. Lo observó unos segundos más, intentando recordar si había escuchado hablar de alguna tribu cuyos integrantes se aventuraran tan cerca del bosque prohibido.</p>
+    <p>—¿Son los vampiros que pasaron hace rato preguntando por una chica?</p>
+    <p>Quackity se quedó inmóvil durante un instante.</p>
+    <p>Vampiros.</p>
+    <p>No sabía qué hacían allí, pero la información le ofrecía una oportunidad de escapar sin tener que inventar una historia demasiado complicada.</p>
+    <p>—¡Sí! Exactamente. ¿Hacia dónde se fueron?</p>
+    <p>Spreen suspiró y metió las manos en los bolsillos.</p>
+    <p>—Estás mintiendo. Los humanos no están en alianza con los vampiros. ¿Cómo sería posible eso en primer lugar?</p>
+    <p>Se acercó un poco más. Ya no parecía preocupado por las supuestas heridas del desconocido, sino interesado en averiguar quién era en realidad.</p>
+    <p>—¿Quién eres o qué eres?</p>
+    <p>Quackity abrió la boca, dispuesto a inventar otra excusa.</p>
+    <p>No llegó a pronunciar una palabra.</p>
+    <p>Un crujido resonó entre los árboles. Después se escuchó el movimiento inconfundible de unas enredaderas trepadoras, que avanzaban entre la vegetación en busca de una nueva presa.</p>
+    <p>Quackity reconoció el sonido al instante.</p>
+    <p>Su cuerpo reaccionó antes de que pudiera pensarlo. Las alas se desplegaron desde las aberturas de su ropa, extendiéndose a ambos lados de su espalda.</p>
+    <p>Spreen se quedó boquiabierto.</p>
+    <p>Durante unos segundos, ninguno de los dos se movió. El hombre lobo miró las alas, después el rostro de Quackity y finalmente las enredaderas que seguían acercándose entre los árboles.</p>
+    <p>La criatura que tenía delante no era un humano perdido.</p>
+    <p>Era un hada oscura.</p>
+    <p>Quackity no esperó a descubrir qué pensaba hacer Spreen con aquella información. Se dio la vuelta y echó a correr, intentando encontrar un sendero que lo llevara lejos del claro.</p>
+    <p>Detrás de él, Spreen seguía intentando asimilar lo que acababa de presenciar.</p>
+    <p>Las hadas oscuras eran criaturas de leyenda, seres que supuestamente no sobrevivían a los encuentros con otras especies. Su existencia estaba rodeada de historias sobre ataques, desapariciones y técnicas mágicas capaces de acabar con cualquiera que se acercara demasiado.</p>
+    <p>Sin embargo, la criatura que acababa de conocer no lo había atacado.</p>
+    <p>Había mentido, se había puesto nerviosa y había salido corriendo al escuchar una planta acercándose.</p>
+    <p>Por primera vez, Spreen tuvo motivos para preguntarse cuántas de las historias que conocía eran ciertas.</p>
+    <p>Y Quackity, mientras tanto, solo podía pensar en una cosa: había cometido el error de dejar que un hombre lobo descubriera que las hadas seguían existiendo.</p>
+  </article>
+</section>
+
+<section class="page" id="tina">
+  <div class="page-title"><h2>La historia de Tina</h2><p>Una vampira noble que decidió no seguir las tradiciones de su familia.</p></div>
+  <article class="card">
+    <h3>Tina, la vampira que no quería cazar</h3>
+    <p>Tina nació en una familia de vampiros nobles y creció rodeada de banquetes, vestidos elegantes y celebraciones en las que la caza era una tradición familiar. Desde pequeña se esperaba que aprendiera a cazar y que participara en los rituales de su linaje, pero nunca consiguió acostumbrarse a la idea de asesinar a una criatura por diversión o alimento.</p>
+    <p>Esto no significa que Tina sea incapaz de comer carne o que rechace toda clase de alimento animal. Lo que le desagrada es la costumbre vampírica de alimentarse de presas vivas y convertir su sufrimiento en un espectáculo. Le resulta especialmente difícil soportar que sus familiares jueguen con sus víctimas antes de matarlas.</p>
+    <p>Para evitar conflictos, su familia aprendió a esconder sangre en salsas, aderezos y otros alimentos que Tina puede consumir sin tener que presenciar una cacería. Sus parientes presentan esta solución como una simple peculiaridad suya y procuran que los demás nobles no descubran hasta qué punto rechaza sus tradiciones.</p>
+    <p>Aunque algunos familiares la consideran demasiado delicada, otros la protegen porque sigue siendo parte de una familia importante. Tina, por su lado, no desea abandonar necesariamente su linaje, pero tampoco está dispuesta a convertirse en alguien que disfruta lastimando a otros.</p>
+    <p>Su compasión la lleva a cuestionar costumbres que el resto de los vampiros considera naturales. Esto puede ponerla en peligro, especialmente cuando decide proteger a criaturas que su familia considera presas legítimas.</p>
+  </article>
+  <article class="card">
+    <h3>Una noche de Luna llena</h3>
+    <p>Quackity y Spreen no tenían demasiadas razones para confiar el uno en el otro cuando comenzaron a viajar juntos. Su primer encuentro había sido bastante desafortunado: Spreen, líder de Azkadell, encontró a Quackity en un claro del bosque y lo confundió con un humano perdido. Quackity, que no quería revelar que era un hada oscura, inventó una historia sobre una expedición y unos compañeros que supuestamente lo estaban buscando.</p>
+    <p>La mentira no duró demasiado. Cuando las enredaderas comenzaron a acercarse y las alas ocultas de Quackity quedaron al descubierto, Spreen comprendió que tenía delante a una criatura que su propia tribu había perseguido durante años. Quackity huyó antes de que la situación empeorara.</p>
+    <p>A pesar de ese comienzo, sus caminos volvieron a cruzarse. Quackity necesitaba abandonar temporalmente su territorio para buscar ingredientes medicinales difíciles de conseguir, mientras que Spreen tenía sus propios motivos para viajar lejos de Azkadell. Ninguno confiaba del todo en el otro, pero ambos descubrieron que sus conocimientos podían resultar útiles durante el trayecto.</p>
+    <p>El problema llegó cuando una noche terminaron demasiado cerca de una propiedad perteneciente a una familia de vampiros nobles.</p>
+    <h3>El banquete de los nobles</h3>
+    <p>Era una noche de Luna llena, una ocasión que la familia de Tina celebraba con uno de sus banquetes tradicionales. La residencia estaba iluminada, los invitados vestían sus mejores ropas y los sirvientes preparaban una cena en la que las presas vivas serían presentadas ante los nobles.</p>
+    <p>Quackity y Spreen fueron descubiertos antes de conseguir alejarse de la propiedad. Para los vampiros, un hombre lobo y un hada oscura no eran invitados inesperados, sino capturas extraordinarias. La presencia de ambos prometía una celebración de la que los nobles hablarían durante años.</p>
+    <p>Spreen llevaba lentes de sol para ocultar sus ojos durante la Luna llena y evitar que los demás notaran con facilidad los cambios que experimentaba. Aunque los lentes no impedían su transformación ni anulaban los efectos de la Luna, le ayudaban a disimular parte de sus señales más evidentes. En una residencia llena de vampiros atentos a cualquier muestra de debilidad, pasar desapercibido era una ventaja.</p>
+    <p>Pero aquella noche no bastaba con esconder los ojos. Los vampiros ya sabían lo que tenían delante y no pensaban dejar escapar semejantes presas.</p>
+    <p>Tina descubrió lo que estaba ocurriendo y comprendió de inmediato que, si no hacía algo, sus familiares terminarían matándolos para convertirlos en el centro del banquete. No le importaba que Spreen fuera un hombre lobo ni que Quackity perteneciera a una especie de la que había oído historias aterradoras. Para ella, ambos eran personas atrapadas en una situación de la que no podían salir por sus propios medios.</p>
+    <p>Aprovechando que conocía la distribución de la residencia y las costumbres de sus familiares, Tina los escondió en una habitación apartada. Les proporcionó ropa para disimular su aspecto, les indicó qué pasillos evitar y les explicó que debían mantenerse lejos del salón principal mientras ella buscaba una salida.</p>
+    <p>El plan estuvo a punto de fracasar cuando uno de sus familiares empezó a sospechar de su comportamiento. Tina tuvo que regresar al banquete y fingir que no sabía nada, soportando las preguntas de sus parientes mientras Quackity y Spreen esperaban una oportunidad para escapar.</p>
+    <p>Cuando finalmente consiguió distraer a los invitados, los condujo por una salida de servicio que daba a los terrenos exteriores. Les entregó provisiones y les indicó qué camino tomar para alejarse de la propiedad antes de que alguien descubriera su ausencia.</p>
+    <p>No les pidió nada a cambio. Solo quería que pudieran marcharse sin que nadie terminara muerto.</p>
+    <h3>El comienzo de una alianza</h3>
+    <p>Una vez lejos de la residencia, Quackity y Spreen comprendieron que Tina se había arriesgado seriamente al ayudarlos. Ella no solo había desobedecido a su familia, sino que había protegido a dos criaturas que los nobles habrían considerado presas valiosas.</p>
+    <p>Spreen, que hasta entonces desconfiaba de los vampiros por su rivalidad con los hombres lobo, tuvo que admitir que Tina no se comportaba como los demás nobles que conocía. Quackity también reconoció que su decisión había sido genuina, aunque siguió manteniendo cierta cautela.</p>
+    <p>Tina no podía regresar a casa fingiendo que nada había sucedido. Si su familia descubría que había permitido escapar a dos presas durante un banquete, las consecuencias serían graves. Además, después de ayudarlos, no quería quedarse esperando a que sus parientes decidieran qué hacer con ella.</p>
+    <p>Por eso terminó acompañándolos durante parte de su viaje. Al principio, la idea era encontrar un lugar seguro donde Tina pudiera esconderse mientras decidía qué hacer con su familia. Sin embargo, los tres descubrieron que podían ayudarse mutuamente: Quackity conocía los secretos y peligros del bosque, Spreen sabía orientarse y negociar con distintas comunidades, y Tina conocía las costumbres de los vampiros nobles, sus territorios y las rutas que convenía evitar.</p>
+    <p>Lo que comenzó como una huida terminó convirtiéndose en un viaje compartido. Ninguno de los tres confiaba ciegamente en los otros, y sus diferencias provocaban discusiones frecuentes, pero ya habían pasado por algo que los unía: cada uno había visto a los demás arriesgarse por alguien que podría haber considerado un enemigo.</p>
+    <p>Desde entonces, Tina viaja con Quackity y Spreen, lejos de las expectativas de su familia. Todavía no sabe si algún día podrá regresar a su hogar sin tener que ocultar quién es realmente, pero por primera vez puede elegir qué clase de vampira quiere ser.</p>
+  </article>
+</section>
+
+<section class="page" id="relaciones">
+  <div class="page-title"><h2>Relaciones entre las especies</h2><p>Las alianzas no son reglas absolutas: cada individuo puede desafiar las expectativas de su comunidad.</p></div>
+  <article class="card">
+    <ul>
+      <li><strong>Humanos y hombres lobo:</strong> alianza política y militar.</li>
+      <li><strong>Humanos y magos:</strong> cooperación e intercambio de conocimientos.</li>
+      <li><strong>Hombres lobo y magos:</strong> alianza basada en intereses compartidos.</li>
+      <li><strong>Vampiros y hombres lobo:</strong> rivalidad histórica.</li>
+      <li><strong>Vampiros y humanos:</strong> relación variable, marcada por la caza y las identidades ocultas.</li>
+      <li><strong>Vampiros y magos:</strong> contactos ocasionales, especialmente con magos viajeros.</li>
+      <li><strong>Hadas oscuras y humanos:</strong> hostilidad profunda, alimentada por las persecuciones.</li>
+      <li><strong>Hadas oscuras y hombres lobo:</strong> relación incierta, condicionada por el territorio y los intereses individuales.</li>
+      <li><strong>Hadas oscuras y magos:</strong> contactos ocasionales, especialmente con las hadas guerreras y los magos viajeros.</li>
+    </ul>
+    <p>Estas relaciones no determinan automáticamente el comportamiento de cada individuo. Un humano puede proteger a un hada, un vampiro puede colaborar con un hombre lobo y un mago puede rechazar las prácticas de sus propios colegas.</p>
+    <p>Precisamente por eso, los encuentros personales pueden alterar un equilibrio que lleva décadas establecido.</p>
+  </article>
+</section>
+
+<section class="page" id="fotos">
+  <div class="page-title"><h2>Fotos</h2><p>Galería de referencias visuales para los lugares, las especies y los elementos importantes del lore. Reemplazá los nombres de archivo por los de tus imágenes.</p></div>
+  <div class="photo-grid">
+    <article class="photo-card">
+      <h3>Mapa de Neverland</h3>
+      <img src="Mapa.png" alt="Mapa de Neverland">
+      <p class="caption">Mapa general de la isla: Azkadell cerca de la costa, tribus y clanes repartidos por el territorio, castillos vampíricos, Escuela de Magos, Bosque Prohibido y Reino de las Hadas.</p>
+    </article>
+    <article class="photo-card">
+      <h3>Azkadell</h3>
+      <img src="azkadell.jpg" alt="Territorio y asentamiento de Azkadell">
+      <p class="caption">Asentamiento principal de la tribu, sus defensas, viviendas y espacios de reunión.</p>
+    </article>
+    <article class="photo-card">
+      <h3>Asentamiento de hombres lobo</h3>
+      <img src="lobos.jpg" alt="Asentamiento de un clan de hombres lobo">
+      <p class="caption">Viviendas, territorio de caza y distribución de un clan lupino.</p>
+    </article>
+    <article class="photo-card">
+      <h3>Escuela de Magos</h3>
+      <img src="magos.jpg" alt="Escuela de Magos">
+      <p class="caption">Edificio de la escuela, aulas, biblioteca y espacios donde se estudian los rituales.</p>
+    </article>
+    <article class="photo-card">
+      <h3>Grimorios y símbolos mágicos</h3>
+      <img src="circulo.jpg" alt="Grimorios, sigilos y círculos mágicos">
+      <p class="caption">Referencias de sigilos, glifos, círculos rituales y libros de magia.</p>
+    </article>
+    <article class="photo-card">
+      <h3>El Bosque Prohibido</h3>
+      <img src="bosque.jpg" alt="El Bosque Prohibido">
+      <p class="caption">Bosque denso, caminos confusos, hongos de esporas embriagadoras y enredaderas móviles.</p>
+    </article>
+    <article class="photo-card">
+      <h3>Reino de las Hadas</h3>
+      <img src="hadas.jpg" alt="Reino de las Hadas">
+      <p class="caption">Vista general del reino oculto, sus árboles, viviendas y espacios comunitarios.</p>
+    </article>
+    <article class="photo-card">
+      <h3>Aguas vitales y nacimiento de un hada</h3>
+      <img src="vital.jpg" alt="Aguas vitales y nacimiento de un hada">
+      <p class="caption">Las aguas mágicas y los copos de nieve que permanecen intactos y dan origen a nuevas hadas.</p>
+    </article>
+    <article class="photo-card">
+      <h3>Hadas Wargans</h3>
+      <img src="war.jpg" alt="Hadas Wargans">
+      <p class="caption">Hadas guerreras, sus armas y la manera en que ocultan sus alas durante las incursiones.</p>
+    </article>
+    <article class="photo-card">
+      <h3>Castillo vampírico</h3>
+      <img src="vampiro.jpg" alt="Castillo de una familia vampírica">
+      <p class="caption">Residencia noble donde se celebran los banquetes, las reuniones familiares y las cacerías.</p>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="kicker">Neverland</div>
+  <p>Archivo del universo · En construcción</p>
+</footer>
+
+<script>
+const navButtons = [...document.querySelectorAll('.nav-btn')];
+const pages = [...document.querySelectorAll('.page')];
+function showPage(id){
+  pages.forEach(page => page.classList.toggle('active', page.id === id));
+  navButtons.forEach(button => button.classList.toggle('active', button.dataset.page === id));
+  history.replaceState(null, '', '#' + id);
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+navButtons.forEach(button => button.addEventListener('click', event => { event.preventDefault(); showPage(button.dataset.page); }));
+function openHash(){
+  const id = location.hash.slice(1);
+  if (pages.some(page => page.id === id)) {
+    pages.forEach(page => page.classList.toggle('active', page.id === id));
+    navButtons.forEach(button => button.classList.toggle('active', button.dataset.page === id));
+  }
+}
+window.addEventListener('hashchange', openHash);
+openHash();
+</script>
+</body>
+</html>
